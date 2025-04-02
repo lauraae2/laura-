@@ -1,74 +1,45 @@
-let arr = [1,2,3,4,5,6,7,8,9];
-/*
-for(let i = 0; i < arr.length; i++)
+function myFunction()
 {
-    console.log(arr[i]);
-}
-*/
-
-/*
-let i = 0;
-while(1 < arr.length)
-{
-    console.log(arr[i]);
-    i++;
-}
-*/
-
-/*
-let i = 0
-while(true)
-{
-    i++
-    console.log(i);
-    if(i == 21)
+    let h2_element = document.getElementById("h2_id");
+    console.log(h2_element);
+    let name_element = document.getElementById("name_input");
+    let surname_element = document.getElementById("surname_input");
+    let age_element = document.getElementById("age_input");
+    let email_element = document.getElementById("email_input");
+    let table_element = document.getElementById("myTable");
+    if(name_element.value ==""  || !name_element.value.match(/[A-z]/) || name_element.value.match(/[0-9]/))
     {
-        break; 
+        console.error("Name contains invalid symbols!");
+        return;
     }
-}
-*/
-
-/*
-let i = 0
-while(true)
+    
+    if(surname_element.value ==""  || !surname_element.value.match(/[A-z]/) || surname_element.value.match(/[0-9]/))
     {
-        console.log(i);
-        if(i == 10)
-        {
-            i++;
-            continue;
-        }
-
-        if(i => 21)
-        {
-            break; 
-        }
-        console.log(i);
-        i++;
+        console.error("Surname contains invalid symbols!");
+        return;
     }
-*/
-
-
-let user = true;
-let array = [];
-while(user)
-{
-    let x = parseFloat (prompt("Enter number"));
-    console.log()
-    if(x < 0)
+    
+    if(name_element.value ==""  || !age_element.value.match(/[0-9]/))
     {
-        user = false;
-        continue;
+        console.error("Age contains invalid symbols!");
+        return;
     }
-    array.push(x)
-}
-console.log(array);
+    
+    if(email_element.value ==""  || !email_element.value.match(/[@]/))
+    {
+        console.error("Email contains invalid symbols!");
+        return;
+    }
+    h2_element.innerText = "Hello, " + name_element.value + " " + surname_element.value + " " + age_element.value;
 
-let result = 0;
-for(let i = 0; i < array.length; i++)
-{
-    result += array[i];
+
+    let row = table_element.insertRow();
+    let cell1 = row.insertCell();
+    let cell2 = row.insertCell();
+    let cell3 = row.insertCell();
+
+    cell1.innerHTML = name_element.value;
+    cell1.innerHTML = surname_element.value;
+    cell1.innerHTML = email_element.value;
+
 }
-result /= array.length;
-console.log(result);
-//result = result / array.length;
