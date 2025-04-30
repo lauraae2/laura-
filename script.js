@@ -1,50 +1,44 @@
-let click_Power = 1;
-let upgrade_count = 1;
-let upgrade2_count = 1;
-
-
-
-function click_Handler()
+function MyFunction()
 {
-    let user_Points = Number(document.getElementById("points").innerText);
-    console.log(user_Points);
-    user_Points++;
-    document.getElementById("points").innerText = user_Points;
-}
+    localStorage.clear();
+    const nameObj = document.getElementById("user_name");
+    const surnameObj = document.getElementById("user_surname");
+    const urlObj = document.getElementById("user_url");
+    
+    console.log(nameObj.value);
+    console.log(surnameObj.value);
+    console.log(urlObj.value);
 
-function upgrade_Handler()
-{
-    let user_Points = document.getElementById("points").innerText = user_Points - 15;
-    let upgrade_price = 10 * upgrade_count;
-    document.getElementById("upgrade1").value = upgrade_price;
-    if(user_Points >= 15)
+    const user = 
     {
-        click_Power++;
+        name : nameObj.value,
+        surname : surnameObj.value,
+        url : urlObj.value
     }
-    else
-    {
-        console.warn("Points < 15");
-    }
+
+    console.log(user.name);
+    console.log(user.surname);
+    console.log(user.url);
+
+    localStorage.setItem("user1", JSON.stringify(user));
+    alert("User saved!");
+    window.location.href = 'index2.html';
 }
 
-function upgrade2_Handler()
+function MyFunction2()
 {
-let user_Points = Number(document.getElementById("points").innerText);
-if(user_Points >=30)
-{
-    upgrade2_count++;
-    let user_Points = document.getElementById("points").innerText = user_Points - 30;
-}
-}
+    const parentObj = document.getElementById("parent");
+    const new_user = JSON.parse(localStorage.getItem("user1"));
 
-const 
+    console.log(new_user.name);
+    console.log(new_user.surname);
+    console.log(new_user.url);
 
-function passive_income()
-{
-    console.log("test");
-    let points = document.getElementById("points").innerText;
-    points += 1 * upgrade2_count;
-    document.getElementById("points").innerText += 1 * upgrade2_count;
+    const new_div = document.createElement("div");
+    new_div.innerHTML = `
+    <h2>${new_user.name}</h2>
+    <h2>${new_user.surname}</h2>
+    <img src="${new_user.url}" width=200px>
+    `
+    parentObj.appendChild(new_div);
 }
-
-setInterval(passive_income,1000);
